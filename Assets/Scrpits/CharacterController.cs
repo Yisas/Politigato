@@ -4,10 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(TrailRenderer))]
+[RequireComponent(typeof(AudioSource))]
 public class CharacterController : MonoBehaviour
 {
     public float horizontalSpeed;
     public float verticalSpeed;
+
+    public AudioClip bucketPickupSound;
     
     private Vector3 initialPosition;
     private float verticalInput;
@@ -15,6 +18,7 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb;
     private TrailRenderer tr;
     private GManager gManager;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,7 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
         gManager = FindObjectOfType<GManager>();
+        audioSource = GetComponent<AudioSource>();
 
         initialPosition = transform.position;
     }
@@ -53,6 +58,7 @@ public class CharacterController : MonoBehaviour
     {
         if(collision.tag == "Bucket")
         {
+            audioSource.PlayOneShot(bucketPickupSound);
             gManager.Score();
             collision.gameObject.SetActive(false);
         }
