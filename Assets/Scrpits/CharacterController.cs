@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(TrailRenderer))]
 public class CharacterController : MonoBehaviour
 {
     public float horizontalSpeed;
     public float verticalSpeed;
-
+    
     private Vector3 initialPosition;
     private float verticalInput;
 
     private Rigidbody2D rb;
+    private TrailRenderer tr;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<TrailRenderer>();
         initialPosition = transform.position;
     }
 
@@ -35,7 +38,10 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.transform.tag == "Obstacle")
         {
+            tr.time = 0;
             transform.position = initialPosition;
+            tr.Clear();
+            tr.time = 1;
         }
     }
 }
