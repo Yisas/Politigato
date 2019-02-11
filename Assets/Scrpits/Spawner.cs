@@ -6,13 +6,15 @@ public class Spawner : MonoBehaviour
 {
     public float timeToSpawn;
     public GameObject objToSpawn;
+    public float minDelay;
+    public float maxDelay;
 
     private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = timeToSpawn;
+        timer = Random.Range(minDelay, maxDelay) + timeToSpawn;
     }
 
     // Update is called once per frame
