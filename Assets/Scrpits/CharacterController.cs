@@ -14,12 +14,15 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody2D rb;
     private TrailRenderer tr;
+    private GManager gManager;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
+        gManager = FindObjectOfType<GManager>();
+
         initialPosition = transform.position;
     }
 
@@ -42,6 +45,16 @@ public class CharacterController : MonoBehaviour
             transform.position = initialPosition;
             tr.Clear();
             tr.time = 1;
+            gManager.ResetScore();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Bucket")
+        {
+            gManager.Score();
+            collision.gameObject.SetActive(false);
         }
     }
 }
