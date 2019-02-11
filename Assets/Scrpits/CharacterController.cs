@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour
     public float horizontalSpeed;
     public float verticalSpeed;
 
+    private Vector3 initialPosition;
     private float verticalInput;
 
     private Rigidbody2D rb;
@@ -16,6 +17,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -27,5 +29,13 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontalSpeed, verticalInput * verticalSpeed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Obstacle")
+        {
+            transform.position = initialPosition;
+        }
     }
 }
