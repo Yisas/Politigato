@@ -11,6 +11,7 @@ public class CharacterController : MonoBehaviour
     public float verticalSpeed;
 
     public AudioClip bucketPickupSound;
+    public AudioClip distressSound;
     
     private Vector3 initialPosition;
     private float verticalInput;
@@ -46,11 +47,7 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.transform.tag == "Obstacle")
         {
-            tr.time = 0;
-            transform.position = initialPosition;
-            tr.Clear();
-            tr.time = 1;
-            gManager.ResetScore();
+            Respawn();
         }
     }
 
@@ -61,6 +58,21 @@ public class CharacterController : MonoBehaviour
             audioSource.PlayOneShot(bucketPickupSound);
             gManager.Score();
             collision.gameObject.SetActive(false);
+        } else
+        
+        if(collision.tag == "Bullet")
+        {
+            Respawn();
         }
+    }
+
+    private void Respawn()
+    {
+        audioSource.PlayOneShot(distressSound);
+        tr.time = 0;
+        transform.position = initialPosition;
+        tr.Clear();
+        tr.time = 1;
+        gManager.ResetScore();
     }
 }

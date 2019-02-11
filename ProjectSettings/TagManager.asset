@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Bucket
+  - Bullet
   layers:
   - Default
   - TransparentFX
