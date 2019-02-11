@@ -11,7 +11,7 @@ public class GManager : MonoBehaviour
     public Animator blackoutPanelAnimator;
     public float gameTime;
 
-    private float score;
+    public static int score = 0;
     private float timer;
 
     private GameObject[] buckets;
