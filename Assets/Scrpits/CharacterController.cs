@@ -8,6 +8,8 @@ public class CharacterController : MonoBehaviour
     public float horizontalSpeed;
     public float verticalSpeed;
 
+    private float verticalInput;
+
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -19,11 +21,11 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-               
+        verticalInput = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
     {
-        rb.AddForce(new Vector2(horizontalSpeed, 0));
+        rb.velocity = new Vector2(horizontalSpeed, verticalInput * verticalSpeed);
     }
 }
