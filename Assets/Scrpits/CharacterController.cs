@@ -8,8 +8,9 @@ public class CharacterController : MonoBehaviour
 {
     public float horizontalSpeed;
     public float verticalSpeed;
+
+    public GameObject powerUpHair;
     public float powerUpInterval;
-    public float powerUpSpeedMultiplier;
 
     public AudioClip bucketPickupSound;
     public AudioClip distressSound;
@@ -46,8 +47,7 @@ public class CharacterController : MonoBehaviour
             powerUpTimer -= Time.deltaTime;
             if(powerUpTimer < 0)
             {
-                horizontalSpeed /= powerUpSpeedMultiplier;
-                poweredUp = false;
+                EndPowerUp();
             }
         }
     }
@@ -75,7 +75,8 @@ public class CharacterController : MonoBehaviour
         }
         else if (collision.tag == "Bullet")
         {
-            Respawn();
+            if(!poweredUp)
+                Respawn();
         }
         else if (collision.tag == "Powerup")
         {
@@ -86,14 +87,23 @@ public class CharacterController : MonoBehaviour
 
     public void PickupPowerUp()
     {
+        powerUpHair.SetActive(true);
+        powerUpHair.GetComponent<AudioSource>().Play();
         audioSource.PlayOneShot(powerUpSound);
         powerUpTimer = powerUpInterval;
-        horizontalSpeed *= powerUpSpeedMultiplier;
         poweredUp = true;
+    }
+
+    public void EndPowerUp()
+    {
+        powerUpHair.GetComponent<AudioSource>().Stop();
+        powerUpHair.SetActive(false);
+        poweredUp = false;
     }
 
     private void Respawn()
     {
+        EndPowerUp();
         audioSource.PlayOneShot(distressSound);
         trailRenderer.time = 0;
         transform.position = initialPosition;

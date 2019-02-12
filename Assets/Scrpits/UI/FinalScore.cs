@@ -28,7 +28,7 @@ public class FinalScore : MonoBehaviour
         {
             quit = true;
             timer = time;
-            scoreText.text = "Puntuación final: " + (score / 10000) + "\nSe te devaluó!";
+            scoreText.text = "Puntuación final: " + (score / 10000) + "\nUps, se te devaluó!";
         }
         else if(timer <= 0 && quit)
         {
