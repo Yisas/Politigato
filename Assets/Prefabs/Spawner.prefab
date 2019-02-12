@@ -43,9 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536958d50d8ddee4f99c2aa38df7f50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToSpawn: 3
   objToSpawn:
   - {fileID: 4230324014815312278, guid: b95b8215797a3a14eac9f5272edbb502, type: 3}
   - {fileID: 3077970804845937848, guid: 525e3eef592f0ce47b99a29895b3c330, type: 3}
-  minDelay: 0
-  maxDelay: 3
+  minTime: 3
+  maxTime: 6

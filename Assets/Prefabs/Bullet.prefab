@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2333531372921251647}
   - component: {fileID: 8986952104980004708}
   - component: {fileID: 4317961525275589902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1915543249423860417}
   - component: {fileID: 6966753938221794563}
   - component: {fileID: 8483063850916446647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bala Fria
   m_TagString: Untagged
   m_Icon: {fileID: 0}

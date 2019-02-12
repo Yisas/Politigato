@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2991323441761515184}
   - component: {fileID: 2991323441761515191}
   - component: {fileID: 2991323441761515190}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bucket
   m_TagString: Bucket
   m_Icon: {fileID: 0}

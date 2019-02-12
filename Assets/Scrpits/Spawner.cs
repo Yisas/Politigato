@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float timeToSpawn;
     public GameObject[] objToSpawn;
-    public float minDelay;
-    public float maxDelay;
+    public float minTime;
+    public float maxTime;
 
     private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = Random.Range(minDelay, maxDelay) + timeToSpawn;
+        timer = Random.Range(minTime, maxTime);
     }
 
     // Update is called once per frame
@@ -24,7 +23,7 @@ public class Spawner : MonoBehaviour
 
         if(timer < 0)
         {
-            timer = timeToSpawn;
+            timer = Random.Range(minTime, maxTime);
             Instantiate(objToSpawn[Random.Range(0, objToSpawn.Length - 1)], transform.position, transform.rotation);
         }
     }
