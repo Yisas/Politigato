@@ -46,6 +46,9 @@ public class GManager : MonoBehaviour
         for(int i = 0; i < buckets.Length; i++)
         {
             buckets[i].SetActive(true);
+        }
+        for (int i = 0; i < powerUps.Length; i++)
+        {
             powerUps[i].SetActive(true);
         }
     }
