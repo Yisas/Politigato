@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 6966753938221794563}
   - component: {fileID: 8483063850916446647}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Bala Fria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7985046442425206372}
-  m_Text: '"Bala loca"'
+  m_Text: "\"Bala fr\xEDa\""
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
@@ -233,4 +233,4 @@ TextMesh:
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080

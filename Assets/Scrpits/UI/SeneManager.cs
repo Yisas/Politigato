@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SeneManager : MonoBehaviour
 {
-    public void StartGame()
+    public void AnimationCallback()
     {
         SceneManager.LoadScene(1);
     }

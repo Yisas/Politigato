@@ -16,7 +16,7 @@ public class EndGame : MonoBehaviour
         
     }
 
-    public void End()
+    public void AnimationCallback()
     {
         FindObjectOfType<GManager>().EndGame();
     }

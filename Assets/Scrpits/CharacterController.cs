@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(TrailRenderer))]
 [RequireComponent(typeof(AudioSource))]
 public class CharacterController : MonoBehaviour
 {
@@ -12,12 +11,12 @@ public class CharacterController : MonoBehaviour
 
     public AudioClip bucketPickupSound;
     public AudioClip distressSound;
-    
+    public TrailRenderer trailRenderer;
+
     private Vector3 initialPosition;
     private float verticalInput;
 
     private Rigidbody2D rb;
-    private TrailRenderer tr;
     private GManager gManager;
     private AudioSource audioSource;
 
@@ -25,7 +24,6 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        tr = GetComponent<TrailRenderer>();
         gManager = FindObjectOfType<GManager>();
         audioSource = GetComponent<AudioSource>();
 
@@ -69,10 +67,10 @@ public class CharacterController : MonoBehaviour
     private void Respawn()
     {
         audioSource.PlayOneShot(distressSound);
-        tr.time = 0;
+        trailRenderer.time = 0;
         transform.position = initialPosition;
-        tr.Clear();
-        tr.time = 1;
+        trailRenderer.Clear();
+        trailRenderer.time = 1;
         gManager.ResetScore();
     }
 }
