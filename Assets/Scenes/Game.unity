@@ -9336,6 +9336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718680100}
   - component: {fileID: 1718680099}
+  - component: {fileID: 1718680101}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -9452,6 +9453,25 @@ Transform:
   m_Father: {fileID: 1225714880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1718680101
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718680098}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56f49597fd45f564585c20e169187828, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1757217422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5863032025313466892, guid: c5bbab2cef2134847983d56a317b093c,
@@ -11157,6 +11177,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2049699245292307506, guid: 3d52e6ae33a350944ae1ca4df167a91c,
+        type: 3}
+      propertyPath: objToSpawn.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049699245292307506, guid: 3d52e6ae33a350944ae1ca4df167a91c,
+        type: 3}
+      propertyPath: objToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 3077970804845937848, guid: 525e3eef592f0ce47b99a29895b3c330,
+        type: 3}
+    - target: {fileID: 2049699245292307506, guid: 3d52e6ae33a350944ae1ca4df167a91c,
+        type: 3}
+      propertyPath: objToSpawn.Array.data[1]
+      value: 
+      objectReference: {fileID: 4230324014815312278, guid: b95b8215797a3a14eac9f5272edbb502,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d52e6ae33a350944ae1ca4df167a91c, type: 3}
 --- !u!4 &5863032025313466892 stripped

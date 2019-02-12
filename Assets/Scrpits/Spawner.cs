@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public float timeToSpawn;
-    public GameObject objToSpawn;
+    public GameObject[] objToSpawn;
     public float minDelay;
     public float maxDelay;
 
@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour
         if(timer < 0)
         {
             timer = timeToSpawn;
-            Instantiate(objToSpawn, transform.position, transform.rotation);
+            Instantiate(objToSpawn[Random.Range(0, objToSpawn.Length - 1)], transform.position, transform.rotation);
         }
     }
 }
