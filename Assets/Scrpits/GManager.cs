@@ -32,6 +32,11 @@ public class GManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
         timerText.text = ((int)(timer / 60)) + ":" + (int)(timer % 60);
+
+        if(timer < 0)
+        {
+            blackoutPanelAnimator.SetTrigger("fade");
+        }
     }
 
     public void Score()
@@ -61,7 +66,7 @@ public class GManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             blackoutPanelAnimator.SetTrigger("fade");
         }

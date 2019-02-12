@@ -93,8 +93,15 @@ public class CatController : MonoBehaviour
         }
         else if (collision.tag == "Bullet")
         {
-            if(!poweredUp)
+            if (!poweredUp)
+            {
                 StartRespawn();
+            }
+            else
+            {
+                audioSource.PlayOneShot(bucketPickupSound);
+                gManager.Score();
+            }
         }
         else if (collision.tag == "Powerup")
         {
