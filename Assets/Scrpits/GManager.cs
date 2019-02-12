@@ -11,7 +11,8 @@ public class GManager : MonoBehaviour
     public Animator blackoutPanelAnimator;
     public float gameTime;
 
-    public static int score = 0;
+    private int score = 0;
+    public static int maxScore = 0;
     private float timer;
 
     private GameObject[] buckets;
@@ -41,6 +42,11 @@ public class GManager : MonoBehaviour
 
     public void ResetScore()
     {
+        if(score > maxScore)
+        {
+            maxScore = score;
+        }
+
         score = 0;
         scoreText.text = "0";
         for(int i = 0; i < buckets.Length; i++)

@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
         if(timer < 0)
         {
             timer = Random.Range(minTime, maxTime);
-            Instantiate(objToSpawn[Random.Range(0, objToSpawn.Length - 1)], transform.position, transform.rotation);
+            Instantiate(objToSpawn[Random.Range(0, objToSpawn.Length)], transform.position, transform.rotation);
         }
     }
 }

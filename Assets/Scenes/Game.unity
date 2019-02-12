@@ -4681,7 +4681,7 @@ GameObject:
   - component: {fileID: 2009836268}
   - component: {fileID: 2009836267}
   - component: {fileID: 2009836266}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Perrito Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

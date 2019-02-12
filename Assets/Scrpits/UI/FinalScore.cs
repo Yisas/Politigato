@@ -14,7 +14,7 @@ public class FinalScore : MonoBehaviour
 
     void Start()
     {
-        score = GManager.score;
+        score = GManager.maxScore;
         timer = time;
         scoreText.text = "Puntuación final: " + score;
     }
