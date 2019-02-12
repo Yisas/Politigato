@@ -8,6 +8,8 @@ public class CharacterController : MonoBehaviour
 {
     public float horizontalSpeed;
     public float verticalSpeed;
+    public float powerUpInterval;
+    public float powerUpSpeedMultiplier;
 
     public AudioClip bucketPickupSound;
     public AudioClip distressSound;
@@ -15,6 +17,8 @@ public class CharacterController : MonoBehaviour
 
     private Vector3 initialPosition;
     private float verticalInput;
+    private float powerUpTimer;
+    private bool poweredUp = false;
 
     private Rigidbody2D rb;
     private GManager gManager;
@@ -28,12 +32,23 @@ public class CharacterController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         initialPosition = transform.position;
+        powerUpTimer = powerUpInterval;
     }
 
     // Update is called once per frame
     void Update()
     {
         verticalInput = Input.GetAxis("Vertical");
+
+        if (poweredUp)
+        {
+            powerUpTimer -= Time.deltaTime;
+            if(powerUpTimer < 0)
+            {
+                horizontalSpeed /= powerUpSpeedMultiplier;
+                poweredUp = false;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -51,17 +66,27 @@ public class CharacterController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Bucket")
+        if (collision.tag == "Bucket")
         {
             audioSource.PlayOneShot(bucketPickupSound);
             gManager.Score();
             collision.gameObject.SetActive(false);
-        } else
-        
-        if(collision.tag == "Bullet")
+        }
+        else if (collision.tag == "Bullet")
         {
             Respawn();
         }
+        else if (collision.tag == "Powerup")
+        {
+            PickupPowerUp();
+        }
+    }
+
+    public void PickupPowerUp()
+    {
+        powerUpTimer = powerUpInterval;
+        horizontalSpeed *= powerUpSpeedMultiplier;
+        poweredUp = true;
     }
 
     private void Respawn()
