@@ -4,23 +4,30 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(AudioSource))]
-public class CharacterController : MonoBehaviour
+public class CatController : MonoBehaviour
 {
     public float horizontalSpeed;
     public float verticalSpeed;
+
+    public float respawnDelay;
 
     public GameObject powerUpHair;
     public float powerUpInterval;
 
     public AudioClip bucketPickupSound;
     public AudioClip distressSound;
+    public AudioClip bumpSound;
     public AudioClip powerUpSound;
     public TrailRenderer trailRenderer;
 
+    private float initialHorizontalSpeed;
+    private float initialVerticalSpeed;
     private Vector3 initialPosition;
     private float verticalInput;
     private float powerUpTimer;
-    private bool poweredUp = false;
+    public bool poweredUp = false;
+    private float respawnTimer;
+    private bool respawning = false;
 
     private Rigidbody2D rb;
     private GManager gManager;
@@ -34,6 +41,8 @@ public class CharacterController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         initialPosition = transform.position;
+        initialHorizontalSpeed = horizontalSpeed;
+        initialVerticalSpeed = verticalSpeed;
         powerUpTimer = powerUpInterval;
     }
 
@@ -50,6 +59,15 @@ public class CharacterController : MonoBehaviour
                 EndPowerUp();
             }
         }
+
+        if (respawning)
+        {
+            respawnTimer -= Time.deltaTime;
+            if(respawnTimer < 0)
+            {
+                FinishRespawn();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -61,7 +79,7 @@ public class CharacterController : MonoBehaviour
     {
         if (collision.transform.tag == "Obstacle")
         {
-            Respawn();
+            StartRespawn();
         }
     }
 
@@ -76,7 +94,7 @@ public class CharacterController : MonoBehaviour
         else if (collision.tag == "Bullet")
         {
             if(!poweredUp)
-                Respawn();
+                StartRespawn();
         }
         else if (collision.tag == "Powerup")
         {
@@ -101,12 +119,24 @@ public class CharacterController : MonoBehaviour
         poweredUp = false;
     }
 
-    private void Respawn()
+    private void StartRespawn()
     {
+        audioSource.PlayOneShot(bumpSound);
+        horizontalSpeed = 0;
+        verticalSpeed = 0;
+        respawning = true;
+        respawnTimer = respawnDelay;
         EndPowerUp();
+    }
+
+    private void FinishRespawn()
+    {
+        respawning = false;
         audioSource.PlayOneShot(distressSound);
         trailRenderer.time = 0;
         transform.position = initialPosition;
+        horizontalSpeed = initialHorizontalSpeed;
+        verticalSpeed = initialVerticalSpeed;
         trailRenderer.Clear();
         trailRenderer.time = 1;
         gManager.ResetScore();

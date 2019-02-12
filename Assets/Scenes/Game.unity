@@ -3856,10 +3856,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 2.5
   verticalSpeed: 8
+  respawnDelay: 0.3
   powerUpHair: {fileID: 67880502}
   powerUpInterval: 5
   bucketPickupSound: {fileID: 8300000, guid: 6af60dc01cc9de4438da5183a17727f4, type: 3}
   distressSound: {fileID: 8300000, guid: 8550011fbf52cb24a9fe8213f256be4c, type: 3}
+  bumpSound: {fileID: 8300000, guid: 0b95c23ee91e9f54bbb501a1b71554a4, type: 3}
   powerUpSound: {fileID: 8300000, guid: c5f603ce3515acf40bb49bdd0ae4f3cf, type: 3}
   trailRenderer: {fileID: 1718680099}
 --- !u!212 &1225714879
