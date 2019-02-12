@@ -26,6 +26,7 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler
 
     public void StartGame()
     {
+        Cursor.visible = false;
         animator.SetTrigger("fade");
         audioSource.PlayOneShot(clickSound);
     }
