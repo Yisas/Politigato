@@ -15,11 +15,14 @@ public class GManager : MonoBehaviour
     private float timer;
 
     private GameObject[] buckets;
+    private GameObject[] powerUps;
 
     // Start is called before the first frame update
     void Start()
     {
         buckets = GameObject.FindGameObjectsWithTag("Bucket");
+        powerUps = GameObject.FindGameObjectsWithTag("Powerup");
+
         timer = gameTime;
     }
 
@@ -43,6 +46,7 @@ public class GManager : MonoBehaviour
         for(int i = 0; i < buckets.Length; i++)
         {
             buckets[i].SetActive(true);
+            powerUps[i].SetActive(true);
         }
     }
 

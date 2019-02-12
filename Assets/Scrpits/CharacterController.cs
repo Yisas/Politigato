@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
 
     public AudioClip bucketPickupSound;
     public AudioClip distressSound;
+    public AudioClip powerUpSound;
     public TrailRenderer trailRenderer;
 
     private Vector3 initialPosition;
@@ -78,12 +79,14 @@ public class CharacterController : MonoBehaviour
         }
         else if (collision.tag == "Powerup")
         {
+            collision.gameObject.SetActive(false);
             PickupPowerUp();
         }
     }
 
     public void PickupPowerUp()
     {
+        audioSource.PlayOneShot(powerUpSound);
         powerUpTimer = powerUpInterval;
         horizontalSpeed *= powerUpSpeedMultiplier;
         poweredUp = true;
