@@ -43,15 +43,15 @@ public class GManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+
+        if (score > maxScore)
+        {
+            maxScore = score;
+        }
     }
 
     public void ResetScore()
     {
-        if(score > maxScore)
-        {
-            maxScore = score;
-        }
-
         score = 0;
         scoreText.text = "0";
         for(int i = 0; i < buckets.Length; i++)

@@ -10,6 +10,8 @@ public class CatController : MonoBehaviour
     public float verticalSpeed;
 
     public float respawnDelay;
+    public float hitScreenshakeIntensity;
+    public float hitScreenshakeDuration;
 
     public GameObject powerUpHair;
     public float powerUpInterval;
@@ -32,6 +34,7 @@ public class CatController : MonoBehaviour
     private Rigidbody2D rb;
     private GManager gManager;
     private AudioSource audioSource;
+    private CameraFollow cameraFollow;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class CatController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gManager = FindObjectOfType<GManager>();
         audioSource = GetComponent<AudioSource>();
+        cameraFollow = FindObjectOfType<CameraFollow>();
 
         initialPosition = transform.position;
         initialHorizontalSpeed = horizontalSpeed;
@@ -129,6 +133,7 @@ public class CatController : MonoBehaviour
     private void StartRespawn()
     {
         audioSource.PlayOneShot(bumpSound);
+        cameraFollow.ShakeCamera(hitScreenshakeIntensity, hitScreenshakeDuration);
         horizontalSpeed = 0;
         verticalSpeed = 0;
         respawning = true;

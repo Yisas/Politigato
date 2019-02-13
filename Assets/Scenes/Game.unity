@@ -4331,6 +4331,8 @@ MonoBehaviour:
   horizontalSpeed: 2.5
   verticalSpeed: 8
   respawnDelay: 0.3
+  hitScreenshakeIntensity: 0.2
+  hitScreenshakeDuration: 0.2
   powerUpHair: {fileID: 67880502}
   powerUpInterval: 5
   bucketPickupSound: {fileID: 8300000, guid: 6af60dc01cc9de4438da5183a17727f4, type: 3}
